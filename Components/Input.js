@@ -1,25 +1,20 @@
-export const Input = (INPUT) => {
+export const Input = (INPUT, returnedText, counter) => {
 
-    let sample = 'This is the text to type'.split(" ");
+    const returned = returnedText;
 
-    let wordObjs = [];
+    let currentWordCounter = counter;
 
-    sample.forEach(word => {
-        const wordObj = {
-            text: word,
-            correct: false
-        }
-        wordObjs.push(wordObj);
-    })
-
-    console.log(wordObjs);
-    
     let typed = INPUT.value;
-     console.log(INPUT.value.length)
+    let currentWord = returned[currentWordCounter];
+    console.log(currentWordCounter)
 
-    if(INPUT.value.charAt(INPUT.value.length) === sample.charAt(INPUT.value.length)) {
-        console.log('correct!')
+    if(typed === currentWord) {
+        ++currentWordCounter;
+        INPUT.value = '';
+        console.log(currentWord);
+        return("correct")
     }
+    
 
     
 

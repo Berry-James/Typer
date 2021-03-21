@@ -273,14 +273,13 @@ export const Keyboard = () => {
 
     const INPUT = document.querySelector("#text-input");
     INPUT.addEventListener("keydown", (e) => {
-        Input(INPUT);
         if(e.which === 16) {
             e.code === 'ShiftLeft' ? SVG.getElementById("16-L").setAttribute("fill", colors[0]) : SVG.getElementById("16-R").setAttribute("fill", colors[0])
         }
-        if(e.which === 17) {
+        else if(e.which === 17) {
             e.code === 'ControlLeft' ? SVG.getElementById("17-L").setAttribute("fill", colors[0]) : SVG.getElementById("17-R").setAttribute("fill", colors[0])
         } 
-        if(e.which === 18) {
+        else if(e.which === 18) {
             e.code === 'AltLeft' ? SVG.getElementById("18-L").setAttribute("fill", colors[0]) : SVG.getElementById("18-R").setAttribute("fill", colors[0])
         } else {
             SVG.getElementById(`${e.which.toString()}`).setAttribute("fill", colors[0])
@@ -291,14 +290,28 @@ export const Keyboard = () => {
         if(e.which === 16) {
             e.code === 'ShiftLeft' ? SVG.getElementById("16-L").setAttribute("fill", colors[1]) : SVG.getElementById("16-R").setAttribute("fill", colors[1])
         }
-        if(e.which === 17) {
+        else if(e.which === 17) {
             e.code === 'ControlLeft' ? SVG.getElementById("17-L").setAttribute("fill", colors[1]) : SVG.getElementById("17-R").setAttribute("fill", colors[1])
         } 
-        if(e.which === 18) {
+        else if(e.which === 18) {
             e.code === 'AltLeft' ? SVG.getElementById("18-L").setAttribute("fill", colors[1]) : SVG.getElementById("18-R").setAttribute("fill", colors[1])
         } else {
             SVG.getElementById(`${e.which.toString()}`).setAttribute("fill", colors[1])
         }
+    });
+
+
+    const returned = [];
+    let counter = 0;
+
+    'This is the text to type'.split(" ").forEach(word => {
+        returned.push(word + ' ');
+    });
+
+    INPUT.addEventListener('input', () => {
+        Input(INPUT, returned, counter);
     })
+
+    
 
 }

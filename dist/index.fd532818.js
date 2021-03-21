@@ -715,14 +715,11 @@ const Keyboard = () => {
   const SVG = document.querySelector("#keyboard-svg");
   const INPUT = document.querySelector("#text-input");
   INPUT.addEventListener("keydown", e => {
-    _InputJs.Input(INPUT);
     if (e.which === 16) {
       e.code === 'ShiftLeft' ? SVG.getElementById("16-L").setAttribute("fill", colors[0]) : SVG.getElementById("16-R").setAttribute("fill", colors[0]);
-    }
-    if (e.which === 17) {
+    } else if (e.which === 17) {
       e.code === 'ControlLeft' ? SVG.getElementById("17-L").setAttribute("fill", colors[0]) : SVG.getElementById("17-R").setAttribute("fill", colors[0]);
-    }
-    if (e.which === 18) {
+    } else if (e.which === 18) {
       e.code === 'AltLeft' ? SVG.getElementById("18-L").setAttribute("fill", colors[0]) : SVG.getElementById("18-R").setAttribute("fill", colors[0]);
     } else {
       SVG.getElementById(`${e.which.toString()}`).setAttribute("fill", colors[0]);
@@ -731,15 +728,21 @@ const Keyboard = () => {
   INPUT.addEventListener("keyup", e => {
     if (e.which === 16) {
       e.code === 'ShiftLeft' ? SVG.getElementById("16-L").setAttribute("fill", colors[1]) : SVG.getElementById("16-R").setAttribute("fill", colors[1]);
-    }
-    if (e.which === 17) {
+    } else if (e.which === 17) {
       e.code === 'ControlLeft' ? SVG.getElementById("17-L").setAttribute("fill", colors[1]) : SVG.getElementById("17-R").setAttribute("fill", colors[1]);
-    }
-    if (e.which === 18) {
+    } else if (e.which === 18) {
       e.code === 'AltLeft' ? SVG.getElementById("18-L").setAttribute("fill", colors[1]) : SVG.getElementById("18-R").setAttribute("fill", colors[1]);
     } else {
       SVG.getElementById(`${e.which.toString()}`).setAttribute("fill", colors[1]);
     }
+  });
+  const returned = [];
+  let counter = 0;
+  ('This is the text to type').split(" ").forEach(word => {
+    returned.push(word + ' ');
+  });
+  INPUT.addEventListener('input', () => {
+    _InputJs.Input(INPUT, returned, counter);
   });
 };
 
@@ -791,21 +794,17 @@ _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "Input", function () {
   return Input;
 });
-const Input = INPUT => {
-  let sample = ('This is the text to type').split(" ");
-  let wordObjs = [];
-  sample.forEach(word => {
-    const wordObj = {
-      text: word,
-      correct: false
-    };
-    wordObjs.push(wordObj);
-  });
-  console.log(wordObjs);
+const Input = (INPUT, returnedText, counter) => {
+  const returned = returnedText;
+  let currentWordCounter = counter;
   let typed = INPUT.value;
-  console.log(INPUT.value.length);
-  if (INPUT.value.charAt(INPUT.value.length) === sample.charAt(INPUT.value.length)) {
-    console.log('correct!');
+  let currentWord = returned[currentWordCounter];
+  console.log(currentWordCounter);
+  if (typed === currentWord) {
+    ++currentWordCounter;
+    INPUT.value = '';
+    console.log(currentWord);
+    return "correct";
   }
 };
 
