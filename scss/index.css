@@ -1,0 +1,33 @@
+.keyboard-svg {
+  max-width: 500px;
+  max-height: 162px;
+}
+
+.text-input {
+  background: none;
+}
+
+html body {
+  background-color: #1F0318;
+}
+
+html h1, html h2, html h3, html h4, html h5, html h6 {
+  color: #E5F2C9;
+}
+
+.primary-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=index.css.map */

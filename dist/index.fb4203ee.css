@@ -1,0 +1,29 @@
+.keyboard-svg {
+  max-width: 500px;
+  max-height: 162px;
+}
+
+.text-input {
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid #fff;
+  padding: 0.4rem 0.8rem 0.4rem 0.8rem;
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+html body {
+  background-color: #1F0318;
+}
+html h1, html h2, html h3, html h4, html h5, html h6 {
+  color: #E5F2C9;
+}
+
+.primary-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/*# sourceMappingURL=index.fb4203ee.css.map */
